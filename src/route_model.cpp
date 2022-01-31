@@ -41,7 +41,7 @@ RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
     return closest_node;
 }
 
-
+// find this node's neighbor from ways that have this node
 void RouteModel::Node::FindNeighbors() {
     for (auto & road : parent_model->node_to_road[this->index]) {
         RouteModel::Node *new_neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
@@ -51,7 +51,7 @@ void RouteModel::Node::FindNeighbors() {
     }
 }
 
-
+//find a node on a way in the map that's closest to (x,y) location
 RouteModel::Node &RouteModel::FindClosestNode(float x, float y) {
     Node input;
     input.x = x;
